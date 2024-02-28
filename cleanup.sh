@@ -123,29 +123,67 @@ echo "** Breakdown per category **"
 
 echo "**Images**"
 echo "Total moved ${files_moved_per_category[images]}, total size ${size_per_category[images]}"
-echo "Average file size: ${size_per_category[images] / size_per_category[images]} bytes"
+if [ "$total_files_moved" -ne 0 ]; then
+    # Calculate average file size for images
+    average_images=$((size_per_category[images] / files_moved_per_category[images]))
+    echo "Average file size: $average_images bytes"
+else
+    echo "No files moved in the Images category."
+fi
+
 
 echo "**Documents**"
 echo "Total moved: ${size_per_category[documents]}"
 echo "Total size: ${size_per_category[documents]} bytes"
-echo "Average file size: ${size_per_category[documents] / size_per_category[documents]} bytes"
+if [ "$total_files_moved" -ne 0 ]; then
+    # Calculate average file size for images
+    average_documents=$((size_per_category[documents] / files_moved_per_category[documents]))
+    echo "Average file size: $average_documents bytes"
+else
+    echo "No files moved in the Documents category."
+fi
 
 echo "**PDFs**"
 echo "Total moved: ${size_per_category[pdfs]}"
 echo "Total size: ${size_per_category[pdfs]} bytes"
-echo "Average file size: ${size_per_category[pdfs] / size_per_category[pdfs]} bytes"
+
+if [ "$total_files_moved" -ne 0 ]; then
+    # Calculate average file size for images
+    average_pdfs=$((size_per_category[pdfs] / files_moved_per_category[pdfs]))
+    echo "Average file size: $average_pdfs bytes"
+else
+    echo "No files moved in the pdfs category."
+fi
 
 echo "**Executables**"
 echo "Total moved: ${size_per_category[executables]}"
 echo "Total size: ${size_per_category[executables]} bytes"
-echo "Average file size: ${size_per_category[executables] / size_per_category[executables]} bytes"
+if [ "$total_files_moved" -ne 0 ]; then
+    # Calculate average file size for images
+    average_executables=$((size_per_category[executables] / files_moved_per_category[executables]))
+    echo "Average file size: $average_executables bytes"
+else
+    echo "No files moved in the executables category."
+fi
 
 echo "**Data**"
 echo "Total moved: ${size_per_category[data]}"
 echo "Total size: ${size_per_category[data]} bytes"
-echo "Average file size: ${size_per_category[data] / size_per_category[data]} bytes"
+if [ "$total_files_moved" -ne 0 ]; then
+    # Calculate average file size for images
+    average_data=$((size_per_category[data] / files_moved_per_category[data]))
+    echo "Average file size: $average_data bytes"
+else
+    echo "No files moved in the data category."
+fi
 
 echo "**Unknown**"
 echo "Total moved: ${size_per_category[unknown]}"
 echo "Total size: ${size_per_category[unknown]} bytes"
-echo "Average file size: ${size_per_category[unknown] / size_per_category[unknown]} bytes"
+if [ "$total_files_moved" -ne 0 ]; then
+    # Calculate average file size for images
+    average_unknown=$((size_per_category[unknown] / files_moved_per_category[unknown]))
+    echo "Average file size: $average_unknown bytes"
+else
+    echo "No files moved in the unknown category."
+fi
