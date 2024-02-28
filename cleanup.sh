@@ -1,13 +1,13 @@
 #! /bin/bash
 
 #var to hold num of total moved files + initalization
-total_files_moved = 0
+total_files_moved=0
 
 #var to hold num of total size of files moved
-total_size = 0
+total_size=0
 
 #array to track total num of files moved per case (per category)
-declare -A files_moved_per_cat
+declare -A files_moved_per_category
 files_moved_per_category[images]=0
 files_moved_per_category[documents]=0
 files_moved_per_category[pdfs]=0
@@ -104,14 +104,48 @@ for file in my_directory/*; do
                 ;;
         esac
     fi
-    fi ###
+    fi
 
-    echo "File move complete. Total Files moved:    $total_files_moved"
-    echo "Total size of files moved:     $total_size bytes"
-    ### avg file size
-    echo "** Breakdown per category **"
 
-    echo "**Images**"
-    echo "Total moved ${files_moved_per_category[$images]}, total size ${size_per_category[$images]}"
+
     
 done
+
+echo "File move complete. Total Files moved:    $total_files_moved"
+echo "Total size of files moved:     $total_size bytes"
+
+### avg file size
+average=$((total_size / total_files_moved))
+echo "Average file size for all files: $average bytes"
+
+   
+echo "** Breakdown per category **"
+
+echo "**Images**"
+echo "Total moved ${files_moved_per_category[images]}, total size ${size_per_category[images]}"
+echo "Average file size: ${size_per_category[images] / size_per_category[images]} bytes"
+
+echo "**Documents**"
+echo "Total moved: ${size_per_category[documents]}"
+echo "Total size: ${size_per_category[documents]} bytes"
+echo "Average file size: ${size_per_category[documents] / size_per_category[documents]} bytes"
+
+echo "**PDFs**"
+echo "Total moved: ${size_per_category[pdfs]}"
+echo "Total size: ${size_per_category[pdfs]} bytes"
+echo "Average file size: ${size_per_category[pdfs] / size_per_category[pdfs]} bytes"
+
+echo "**Executables**"
+echo "Total moved: ${size_per_category[executables]}"
+echo "Total size: ${size_per_category[executables]} bytes"
+echo "Average file size: ${size_per_category[executables] / size_per_category[executables]} bytes"
+
+echo "**Data**"
+echo "Total moved: ${size_per_category[data]}"
+echo "Total size: ${size_per_category[data]} bytes"
+echo "Average file size: ${size_per_category[data] / size_per_category[data]} bytes"
+
+echo "**Unknown**"
+echo "Total moved: ${size_per_category[unknown]}"
+echo "Total size: ${size_per_category[unknown]} bytes"
+echo "Average file size: ${size_per_category[unknown] / size_per_category[unknown]} bytes"
