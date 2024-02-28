@@ -105,4 +105,13 @@ for file in my_directory/*; do
         esac
     fi
     fi ###
+
+    echo "File move complete. Total Files moved:    $total_files_moved"
+    echo "Total size of files moved:     $total_size bytes"
+    ### avg file size
+    echo "** Breakdown per category **"
+
+    echo "**Images**"
+    echo "Total moved ${files_moved_per_category[$images]}, total size ${size_per_category[$images]}"
+    
 done
